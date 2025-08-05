@@ -3,6 +3,7 @@ This project contains handcrafted Windows x64 shellcode that runs without using 
 
 1] simple MessageBox shellcode that displays a message using direct API resolution.
 
+#Soon                                                                                            
 2] A fully working reverse shell, written in position-independent assembly, that connects back to a listener and gives remote command execution.
 
 Both shellcodes are designed to be clean, minimal, and stealthy — using techniques like PEB walking and avoiding static imports. They can be used for learning purposes, red teaming, or understanding how low-level Windows shellcode works under the hood.
