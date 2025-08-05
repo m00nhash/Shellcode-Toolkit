@@ -102,7 +102,7 @@ main:
 		
 		;	pop MessageBox
 		xor rcx, rcx
-		mov rax, 0x0000616863746F47
+		mov rax, 0x000021736B726F77
 		push rax
 		mov rdx, rsp
 		mov r8, 0x0000000000657265
