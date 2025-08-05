@@ -29,9 +29,6 @@ To demonstrate deep understanding of Windows internals and shellcode crafting te
 ## 🔧 Build
 
 ```bash
-WSL
-1) nasm -f win64 shellcode.asm -o shellcode.obj
-
-MSVC
-2) link /SUBSYSTEM:CONSOLE /ENTRY:main shellcode.obj
+nasm -f win64 shellcode.asm -o shellcode.obj
+link /SUBSYSTEM:CONSOLE /ENTRY:main shellcode.obj
 
