@@ -3,8 +3,8 @@ SECTION .text
 global main
 main:
 
-	sub	rsp, 0x28
-	and	rsp, 0xFFFFFFFFFFFFFFF0
+	sub rsp, 0x28
+	and rsp, 0xFFFFFFFFFFFFFFF0
 	xor rcx, rcx
 	mov rax, [gs:rcx + 0x60]
 	mov rax, [rax + 0x18]
@@ -12,19 +12,19 @@ main:
 	mov rsi, [rsi]
 	mov rsi, [rsi]
 	mov rbx, [rsi + 0x30]     ;kernel32
-	mov r8, rbx				  ;kernel32
+	mov r8, rbx		  ;kernel32
 	
 	xor rdx, rdx
 	mov edx, [r8 + 0x3C]
 	add rdx, r8
 	mov edx, [rdx + 0x88]
-	add rdx, r8					;export directory
+	add rdx, r8		 	;export directory
 	mov esi, [rdx + 0x14]		;number of function
 	xor r9,  r9
 	mov r9d, [rdx + 0x20]
-	add r9,  r8					;address of  names
+	add r9,  r8			;address of  names
 	
-	mov rcx, rsi				;loop counter
+	mov rcx, rsi			;loop counter
 	mov rax, 0x0000737365726464
 	push rax
 	mov rax, 0x41636F7250746547
@@ -56,12 +56,12 @@ main:
 		mov r11w, [r10 + rcx * 2]		;holds ordinal 
 		
 		mov r10d, [rdx + 0x1C]
-		add r10, r8						;address of function
+		add r10, r8				;address of function
 		
 		mov ebx, [r10 + r11 * 4]
-		add rbx, r8						; holds GetProcAddress
+		add rbx, r8				; holds GetProcAddress
 		
-		mov r13, rbx					; copy of GetProcAddress
+		mov r13, rbx				; copy of GetProcAddress
 		
 		mov rcx, r8						
 		mov rbx, 0x0000000041797261		
@@ -73,7 +73,7 @@ main:
 		sub rsp, 0x30
 		call r13
 		add rsp, 0x30
-		mov r11, rax					; holds LoadLibraryA
+		mov r11, rax				; holds LoadLibraryA
 		
 		;	find user32.dll
 		mov rax, 0x0000000000006C6C
@@ -85,20 +85,20 @@ main:
 		sub rsp, 0x30
 		call r11
 		add rsp, 0x30
-		mov r12, rax					; holds user32.dll
+		mov r12, rax				; holds user32.dll
 		
 		;	find MessageBox
-		mov rcx, r12					; 1st arg
+		mov rcx, r12					
 		
 		mov rax, 0x000000000041786F
 		push rax
 		mov rax, 0x426567617373654D
 		push rax
-		mov rdx, rsp 					; 2nd arg
+		mov rdx, rsp 					
 		sub rsp, 0x30
-		call r13						; call LoadLibraryA
+		call r13				; call LoadLibraryA
 		add rsp, 0x30
-		mov rbx, rax					; holds MessageBox address
+		mov rbx, rax				; holds MessageBox address
 		
 		;	pop MessageBox
 		xor rcx, rcx
@@ -112,6 +112,6 @@ main:
 		mov r8, rsp
 		xor r9d, r9d
 		sub rsp, 0x38
-		call rbx						; call
+		call rbx				; call
 		add rsp, 0x38
 	
